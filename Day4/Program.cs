@@ -63,6 +63,17 @@ void Check(int i, int j)
     }
 }
 
+void Check2(int i, int j)
+{
+    if (i - 1 >= 0 && i + 1 < n && j - 1 >= 0 && j + 1 < m)
+    {
+        if (arr[i + 1][j + 1] == "M" && arr[i - 1][j + 1] == "M" && arr[i + 1][j - 1] == "S" && arr[i - 1][j - 1] == "S") sum++;
+        else if (arr[i - 1][j + 1] == "M" && arr[i - 1][j - 1] == "M" && arr[i + 1][j - 1] == "S" && arr[i + 1][j + 1] == "S") sum++;
+        else if (arr[i - 1][j - 1] == "M" && arr[i + 1][j - 1] == "M" && arr[i + 1][j + 1] == "S" && arr[i - 1][j + 1] == "S") sum++;
+        else if (arr[i + 1][j + 1] == "M" && arr[i + 1][j - 1] == "M" && arr[i - 1][j - 1] == "S" && arr[i - 1][j + 1] == "S") sum++;
+    }
+}
+
 while ((line = st.ReadLine()) != null)
 {
     arr[i] = line.ToCharArray().Select(c => c.ToString()).ToArray();
@@ -75,7 +86,7 @@ for (int k = 0; k < n; k++)
     m = arr[k].Length;
     for (int f = 0; f < m; f++)
     {
-        if (arr[k][f] == "X") Check(k, f);
+        if (arr[k][f] == "A") Check2(k, f);
     }
 }
 
